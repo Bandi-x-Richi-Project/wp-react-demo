@@ -1,10 +1,20 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.tsx'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import Tailwind from "primereact/passthrough/tailwind";
+import "./global.css";
+import App from "./App";
+import { BrowserRouter } from "react-router-dom";
+import { PrimeReactProvider } from "primereact/api";
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLElement
+);
+root.render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <PrimeReactProvider value={{ unstyled: false, pt: Tailwind }}>
+        <App />
+      </PrimeReactProvider>
+    </BrowserRouter>
+  </React.StrictMode>
+);

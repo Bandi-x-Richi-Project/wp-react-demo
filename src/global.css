@@ -1,0 +1,24 @@
+@layer tailwind-base, primereact, tailwind-utilities;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800;900&display=swap");
+@import "primereact/resources/themes/lara-light-blue/theme.css";
+
+@layer tailwind-base {
+  @tailwind base;
+}
+
+@layer tailwind-utilities {
+  @tailwind components;
+  @tailwind utilities;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: #f2f4f8;
+  margin: 0;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+main {
+  height: calc(100vh - 70px);
+}
