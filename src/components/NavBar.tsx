@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { RiMovieLine } from "react-icons/ri";
 import { BiHomeAlt2 } from "react-icons/bi";

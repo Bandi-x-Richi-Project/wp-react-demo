@@ -1,6 +1,7 @@
 {
   "name": "wp-react-demo",
   "private": true,
+  "homepage": "/wp-content/plugins/react-wordpress/widget/build",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
