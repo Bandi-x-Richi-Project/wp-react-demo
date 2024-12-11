@@ -2,10 +2,16 @@ import { Dropdown } from "primereact/dropdown";
 import BarChart from "../components/charts/BarChart";
 import LineChart from "../components/charts/LineChart";
 import PieChart from "../components/charts/PieChart";
+import { InputText } from "primereact/inputtext";
+import { IconField } from "primereact/iconfield";
+import { InputIcon } from "primereact/inputicon";
+import { Button } from "primereact/button";
+import ProductDataTable from "../components/ProductDataTable";
+import ProductList from "../components/ProductList";
 
 const Home = () => {
   return (
-    <div className="grid">
+    <div className="grid pb-4">
       <div className="col-12 md:col-6 xl:col-3 mb-0">
         <div className="card">
           <div className="flex items-start">
@@ -115,12 +121,47 @@ const Home = () => {
           <div className="text-900 text-xl font-semibold mb-6">
             Sales by Category
           </div>
-          <div
-            className="p-chart flex justify-content-center"
-            data-pc-name="chart"
-            data-pc-section="root"
-          >
+          <div className="p-chart flex justify-content-center">
             <PieChart />
+          </div>
+        </div>
+      </div>
+      <div className="col-12 lg:col-8">
+        <div className="card">
+          <div className="flex flex-column md:flex-row md:align-items-start md:justify-content-between mb-3">
+            <div className="text-900 text-xl font-semibold mb-3 md:mb-0">
+              Recent Sales
+            </div>
+            <div className="inline-flex align-items-center">
+              <IconField
+                iconPosition="left"
+                className="rounded-full overflow-hidden border "
+              >
+                <InputIcon className="pi pi-search"> </InputIcon>
+                <InputText
+                  placeholder="Search"
+                  className="rounded-full overflow-hidden border"
+                />
+              </IconField>
+              <Button className="ml-3 rounded-full p-3">
+                <i className="pi pi-upload"></i>
+              </Button>
+            </div>
+          </div>
+          <div className="" data-pc-name="chart" data-pc-section="root">
+            <ProductDataTable />
+          </div>
+        </div>
+      </div>
+      <div className="col-12 lg:col-4">
+        <div className="card w-full">
+          <div className="flex flex-column md:flex-row md:align-items-start md:justify-content-between mb-3">
+            <div className="text-900 text-xl font-semibold mb-3 md:mb-0">
+              Top Products
+            </div>
+          </div>
+          <div className="w-auto">
+            <ProductList />
           </div>
         </div>
       </div>

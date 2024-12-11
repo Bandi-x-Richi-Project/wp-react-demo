@@ -3,7 +3,7 @@ import { Button } from "primereact/button";
 import { IoMenu } from "react-icons/io5";
 import { useState } from "react";
 import { Avatar } from "primereact/avatar";
-import SideBarMain from "./SideBarContent";
+import SideBarMain from "./SideBarMain";
 
 const NavBar = () => {
   const [visible, setVisible] = useState(false);
