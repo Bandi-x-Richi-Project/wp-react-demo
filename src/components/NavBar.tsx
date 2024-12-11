@@ -1,26 +1,43 @@
-import React from "react";
 import { Link } from "react-router-dom";
-import { RiMovieLine } from "react-icons/ri";
-import { BiHomeAlt2 } from "react-icons/bi";
+import { Button } from "primereact/button";
+import { IoMenu } from "react-icons/io5";
+import { useState } from "react";
+import { Avatar } from "primereact/avatar";
+import SideBarMain from "./SideBarContent";
 
-function NavBar() {
+const NavBar = () => {
+  const [visible, setVisible] = useState(false);
   return (
-    <nav className="shadow-lg bg-blue-100 sticky top-0 z-50 h-[44px]">
-      <div className="flex mx-auto">
-        <div className="w-5/6 px-2 m-2">
-          <RiMovieLine className="inline pr-2 text-3xl" />
-          <Link to="/" className="text-lg font-bold align-middle">
-            Richi's sandbox
-          </Link>
+    <>
+      <SideBarMain visible={visible} onHide={() => setVisible(false)} />
+      <nav className="top-0 z-50 h-[24px]">
+        <div className="flex mx-auto my-4 ">
+          <div className="flex w-5/6 px-2 m-2 text-lg font-bold h-auto items-center">
+            <Button
+              icon={<IoMenu />}
+              onClick={() => setVisible(true)}
+              className="text-gray-600 text-2xl p-2 w-1 h-1"
+              text
+            />
+            <span className="text-gray-600 items-center">
+              E-Commerce Dashboard
+            </span>
+          </div>
+          <div className="w-1/6 px-2 mx-2 h-fit">
+            <Link
+              to="/"
+              className="flex justify-end align-items-center cursor-pointer p-3 gap-2 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple"
+            >
+              <Avatar
+                image="https://primefaces.org/cdn/primereact/images/avatar/amyelsner.png"
+                shape="circle"
+              />
+            </Link>
+          </div>
         </div>
-        <div className="w-1/6 px-2 mx-2">
-          <Link to="/" className="items-center">
-            <BiHomeAlt2 className="h-10" size={24} />
-          </Link>
-        </div>
-      </div>
-    </nav>
+      </nav>
+    </>
   );
-}
+};
 
 export default NavBar;

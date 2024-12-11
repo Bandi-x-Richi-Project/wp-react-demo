@@ -1,6 +1,7 @@
 @layer tailwind-base, primereact, tailwind-utilities;
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800;900&display=swap");
 @import "primereact/resources/themes/lara-light-blue/theme.css";
+@import 'primeicons/primeicons.css';
 
 @layer tailwind-base {
   @tailwind base;
@@ -13,12 +14,21 @@
 
 body {
   font-family: "Montserrat", sans-serif;
-  background-color: #f2f4f8;
+  background-color: #eff3f8;
   margin: 0;
   box-sizing: border-box;
   height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 main {
   height: calc(100vh - 70px);
+}
+
+.card {
+  background: var(--surface-card);
+  padding: 2rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
 }

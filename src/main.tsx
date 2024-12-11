@@ -1,10 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import Tailwind from "primereact/passthrough/tailwind";
 import "./global.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { PrimeReactProvider } from "primereact/api";
+import "primeflex/primeflex.css";
+import "primereact/resources/primereact.css";
+import "primereact/resources/themes/lara-light-indigo/theme.css";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -12,7 +14,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <PrimeReactProvider value={{ unstyled: false, pt: Tailwind }}>
+      <PrimeReactProvider value={{ unstyled: false }}>
         <App />
       </PrimeReactProvider>
     </BrowserRouter>
