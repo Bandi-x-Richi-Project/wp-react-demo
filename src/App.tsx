@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <NavBar />
-      <main className="mx-6 py-6">
+      <main className="mx-5 py-6">
         <Routes>
           <Route path="/" element={<Home />} />
           {/* <Route path="/example/:exampleId" element={<Example />} /> */}

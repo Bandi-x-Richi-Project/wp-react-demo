@@ -27,8 +27,8 @@ main {
 }
 
 .card {
-  background: var(--surface-card);
+  background: white;
   padding: 2rem;
   border-radius: 10px;
-  margin-bottom: 1rem;
+  filter: drop-shadow(0 1px 1px rgb(0 0 0 / 0.05));
 }
