@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import { DataView } from "primereact/dataview";
 import { Rating } from "primereact/rating";
-import { Tag } from "primereact/tag";
-import { classNames } from "primereact/utils";
 import { ProductService } from "../mock/products";
 
 interface Product {
@@ -26,22 +24,6 @@ const ProductList = () => {
       setProducts(data.slice(0, 5))
     );
   }, []);
-
-  const getSeverity = (product: Product) => {
-    switch (product.inventoryStatus) {
-      case "INSTOCK":
-        return "success";
-
-      case "LOWSTOCK":
-        return "warning";
-
-      case "OUTOFSTOCK":
-        return "danger";
-
-      default:
-        return null;
-    }
-  };
 
   const itemTemplate = (product: Product) => {
     return (
