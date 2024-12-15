@@ -7,6 +7,9 @@ import { PrimeReactProvider } from "primereact/api";
 import "primeflex/primeflex.css";
 import "primereact/resources/primereact.css";
 import "primereact/resources/themes/lara-light-indigo/theme.css";
+import { QueryClient, QueryClientProvider } from "react-query";
+
+const queryClient = new QueryClient();
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -14,9 +17,11 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <BrowserRouter basename={import.meta.env.BASE_URL}>
-      <PrimeReactProvider value={{ unstyled: false }}>
-        <App />
-      </PrimeReactProvider>
+      <QueryClientProvider client={queryClient}>
+        <PrimeReactProvider value={{ unstyled: false }}>
+          <App />
+        </PrimeReactProvider>
+      </QueryClientProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

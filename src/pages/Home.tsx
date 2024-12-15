@@ -8,50 +8,23 @@ import { InputIcon } from "primereact/inputicon";
 import { Button } from "primereact/button";
 import ProductDataTable from "../components/ProductDataTable";
 import ProductList from "../components/ProductList";
+
+import { useUser } from "../hooks/useUser";
+import { useAuthStore } from "../store/authStore";
 import { useEffect } from "react";
 
-const username = "admin";
-const appPassword = "admin";
-
-const getToken = async () => {
-  const response = await fetch(
-    "http://13.61.27.234/?rest_route=/jwt-login/v1/auth&username=admin&password=admin",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      // body: JSON.stringify({
-      //   username: username,
-      //   password: appPassword,
-      // }),
-    }
-  );
-
-  const data = await response.json();
-
-  return data.data.jwt; // Save this token
-};
-
-const fetchPosts = async () => {
-  const token = await getToken();
-  console.log(token);
-
-  // http://13.61.27.234/wp-json/andrew/v1/add-meeting
-  // http://13.61.27.234/wp-json/andrew/v1/add-location POST
-  fetch("http://13.61.27.234/wp-json/wp/v2/users", {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  })
-    .then((response) => response.json())
-    .then((data) => console.log(data));
-};
-
 const Home = () => {
+  const { setUser } = useAuthStore();
+  const { data: user, isLoading, error } = useUser();
+
   useEffect(() => {
-    fetchPosts();
-  }, []);
+    setUser(user);
+  }, [user, isLoading]);
+
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>Error fetching user data.</p>;
+
+  console.log(user);
 
   return (
     <div className="grid pb-4">
