@@ -10,26 +10,45 @@ export interface JwtUserResponse {
 
 export interface User {
   id: number;
+  username: string;
   name: string;
+  first_name: string;
+  last_name: string;
+  email: string;
   url: string;
   description: string;
   link: string;
+  locale: string;
+  nickname: string;
   slug: string;
+  roles: (
+    | "subscriber"
+    | "administrator"
+    | "contributor"
+    | "author"
+    | "editor"
+  )[];
+  registered_date: string;
+  capabilities: {
+    [key: string]: boolean;
+  };
+  extra_capabilities: {
+    administrator: boolean;
+  };
   avatar_urls: {
     "24": string;
     "48": string;
     "96": string;
   };
-  meta: unknown[];
-  _links: {
-    self: {
-      href: string;
-      targetHints: {
-        allow: string[];
+  meta: {
+    persisted_preferences: {
+      core: {
+        isComplementaryAreaVisible: boolean;
       };
-    }[];
-    collection: {
-      href: string;
-    }[];
+      _modified: string;
+    };
+  };
+  _links: {
+    [key: string]: boolean;
   };
 }

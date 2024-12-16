@@ -20,6 +20,7 @@ export const useAuthStore = create<AuthState>()(
       checkAuth: () => {
         // Check for token in localStorage
         const token = localStorage.getItem("token");
+        // TODO: add token to sessionStorage or Cookie
 
         if (token) {
           set({ isAuthenticated: true, token });

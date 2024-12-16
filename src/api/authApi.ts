@@ -11,7 +11,7 @@ interface LoginCredentials {
 
 // Create an Axios instance
 const api = axios.create({
-  baseURL: "http://13.61.27.234/wp-json", // Replace with your API base URL
+  baseURL: "https://13.61.27.234.nip.io/wp-json", // Replace with your API base URL
   headers: {
     "Content-Type": "application/json",
   },
@@ -45,5 +45,6 @@ export const login = async (
 };
 
 // TODO: Login validation
+// /wp-json/jwt-auth/v1/token/validate | POST
 
 export default api;

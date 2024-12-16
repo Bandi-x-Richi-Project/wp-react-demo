@@ -2,7 +2,7 @@ import axios from "axios";
 import { useAuthStore } from "../store/authStore";
 
 const userApi = axios.create({
-  baseURL: "http://13.61.27.234/wp-json/wp/v2",
+  baseURL: "https://13.61.27.234.nip.io/wp-json/wp/v2",
 });
 
 userApi.interceptors.request.use((config) => {
@@ -14,6 +14,6 @@ userApi.interceptors.request.use((config) => {
 });
 
 export const getUserData = async () => {
-  const response = await userApi.get("/users/me");
+  const response = await userApi.get("/users/me?context=edit");
   return response.data;
 };
