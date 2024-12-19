@@ -32,3 +32,19 @@ main {
   border-radius: 10px;
   filter: drop-shadow(0 1px 1px rgb(0 0 0 / 0.05));
 }
+
+.p-icon-field {
+  width: 100%;
+}
+
+.p-password-input {
+  width: 100%;
+  padding: 16px;
+  padding-right: 30px;
+}
+
+.p-input-icon {
+  transform: translateY(-50%);
+  margin: 0px;
+  display: flex;
+}

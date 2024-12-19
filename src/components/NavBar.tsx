@@ -13,12 +13,11 @@ import { OverlayPanel } from "primereact/overlaypanel";
 const NavBar = () => {
   const [showSideBar, setShowSideBar] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const { setToken, user, setUser } = useAuthStore();
+  const { logOut, user } = useAuthStore();
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    setToken(null);
-    setUser(null);
+    logOut();
     navigate("/login");
     setShowModal(false);
   };

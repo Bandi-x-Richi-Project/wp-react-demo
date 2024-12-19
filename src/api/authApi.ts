@@ -44,7 +44,15 @@ export const login = async (
   }
 };
 
-// TODO: Login validation
-// /wp-json/jwt-auth/v1/token/validate | POST
+// Validate token function
+export const validateToken = async (): Promise<boolean> => {
+  try {
+    const response = await api.post("/jwt-auth/v1/token/validate");
+    return response.status === 200; // Token is valid if status is 200
+  } catch (error) {
+    console.error("Token validation failed", error);
+    return false; // Token is invalid
+  }
+};
 
 export default api;

@@ -1,20 +1,40 @@
 import { useEffect } from "react";
 import { useAuthStore } from "../store/authStore";
-import { Navigate, Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
+import { validateToken } from "../api/authApi";
 
 const PrivateRoute = () => {
-  const { checkAuth, isAuthenticated } = useAuthStore();
+  const { token, logOut, checkAuth, isAuthenticated } = useAuthStore();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    checkAuth();
-  }, [checkAuth]);
+    // Check for authentication state on mount
+    const checkAuthentication = async () => {
+      checkAuth(); // Restore auth state from session or localStorage
 
-  // If the user is not authenticated, redirect to login
-  if (!isAuthenticated) {
-    return <Navigate to="/login" />;
+      if (!token) {
+        navigate("/login");
+        return;
+      }
+
+      // Validate token if it exists
+      const isValid = await validateToken();
+      if (!isValid) {
+        console.warn("Token is invalid, logging out...");
+        logOut(); // Clear auth state
+        navigate("/login");
+      }
+    };
+
+    checkAuthentication();
+  }, [token, checkAuth, logOut, navigate]);
+
+  // Delay rendering until authentication is checked
+  if (!isAuthenticated || !token) {
+    return null; // Optionally show a loading spinner here
   }
 
-  return <Outlet />; // Render the protected content
+  return <Outlet />; // Render protected content
 };
 
 export default PrivateRoute;
