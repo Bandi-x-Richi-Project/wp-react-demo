@@ -30,7 +30,7 @@ const NavBar: FC<NavBarProps> = ({ onShow }) => {
     <>
       <nav className="top-0 z-50 h-[24px]">
         <div className="flex mx-auto my-2 ">
-          <div className="flex w-5/6 px-2 ml-3 m-2 text-lg font-bold h-auto items-center">
+          <div className="flex w-11/12 px-2 ml-3 m-2 text-lg font-bold h-auto items-center">
             <Button
               icon={<IoMenu size={22} />}
               onClick={() => onShow(true)}
@@ -39,7 +39,7 @@ const NavBar: FC<NavBarProps> = ({ onShow }) => {
             />
             <span className="ml-2 text-gray-600">E-Commerce Dashboard</span>
           </div>
-          <div className="w-1/6 px-2 mx-2 h-fit">
+          <div className="w-1/12 px-2 mx-2 h-fit justify-center flex">
             <Link
               to="/"
               className="flex justify-end align-items-center cursor-pointer p-3 gap-2 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple"
@@ -53,13 +53,15 @@ const NavBar: FC<NavBarProps> = ({ onShow }) => {
               />
             </Link>
             {/* Overlay Panel for Logout */}
-            <OverlayPanel ref={opRef} showCloseIcon>
-              <div className="flex flex-col">
-                <p>{user?.name}</p>
+            <OverlayPanel ref={opRef} showCloseIcon closeOnEscape>
+              <div className="flex flex-col items-center">
+                <p className="text-bg">{user?.name}</p>
+                <hr className="my-3 w-full border-top-1 border-none surface-border" />
                 <Button
                   label="Logout"
                   icon="pi pi-sign-out"
-                  className="p-button-text"
+                  className="p-0"
+                  text
                   onClick={() => setShowModal(true)}
                 />
               </div>

@@ -11,11 +11,11 @@ const BaseLayout: React.FC = () => {
       <SideBarMain visible={showSideBar} onHide={() => setShowSideBar(false)} />
       <div
         className={`flex-grow transition-all duration-300 ${
-          showSideBar ? "ml-72" : "ml-0"
+          showSideBar ? "lg:ml-72" : "ml-0"
         }`}
       >
         <NavBar onShow={setShowSideBar} />
-        <main className="mx-4 py-6">
+        <main className="mx-3 md:mx-4 py-6">
           <Outlet />
         </main>
       </div>

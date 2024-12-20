@@ -17,8 +17,8 @@ const SideBarMain: FC<SideBarMainProps> = ({ visible, onHide }) => {
   return (
     <Sidebar
       visible={visible}
-      modal={false}
-      className="h-full fixed top-0 left-0 w-72"
+      modal={false} // TODO: Mobile mode masking background
+      className="h-full lg:fixed top-0 left-0 w-72"
       onHide={() => onHide(false)}
       content={
         (/*{ closeIconRef, hide }*/) => (
