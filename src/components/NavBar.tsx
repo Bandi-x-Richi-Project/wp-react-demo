@@ -2,16 +2,18 @@
 import { Link } from "react-router-dom";
 import { Button } from "primereact/button";
 import { IoMenu } from "react-icons/io5";
-import { useState, useRef } from "react";
+import { useState, useRef, FC } from "react";
 import { Avatar } from "primereact/avatar";
 import { Dialog } from "primereact/dialog";
 import { useAuthStore } from "../store/authStore";
 import { useNavigate } from "react-router-dom";
-import SideBarMain from "./SideBarMain";
 import { OverlayPanel } from "primereact/overlaypanel";
 
-const NavBar = () => {
-  const [showSideBar, setShowSideBar] = useState(false);
+interface NavBarProps {
+  onShow: (open: boolean) => void;
+}
+
+const NavBar: FC<NavBarProps> = ({ onShow }) => {
   const [showModal, setShowModal] = useState(false);
   const { logOut, user } = useAuthStore();
   const navigate = useNavigate();
@@ -26,20 +28,16 @@ const NavBar = () => {
 
   return (
     <>
-      <SideBarMain visible={showSideBar} onHide={() => setShowSideBar(false)} />
-
       <nav className="top-0 z-50 h-[24px]">
-        <div className="flex mx-auto my-4 ">
-          <div className="flex w-5/6 px-2 m-2 text-lg font-bold h-auto items-center">
+        <div className="flex mx-auto my-2 ">
+          <div className="flex w-5/6 px-2 ml-3 m-2 text-lg font-bold h-auto items-center">
             <Button
-              icon={<IoMenu />}
-              onClick={() => setShowSideBar(true)}
-              className="text-gray-600 text-2xl p-2 w-1 h-1"
+              icon={<IoMenu size={22} />}
+              onClick={() => onShow(true)}
+              className="text-gray-600 p-2 w-auto h-auto hover:bg-gray-200 rounded-lg flex items-center justify-center"
               text
             />
-            <span className="text-gray-600 items-center">
-              E-Commerce Dashboard
-            </span>
+            <span className="ml-2 text-gray-600">E-Commerce Dashboard</span>
           </div>
           <div className="w-1/6 px-2 mx-2 h-fit">
             <Link
