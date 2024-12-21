@@ -55,7 +55,7 @@ const Login = () => {
       <Toast ref={toast} />
       <Card
         title="Login"
-        className="w-full max-w-sm p-4 shadow-lg bg-white rounded-2xl"
+        className="w-full max-w-sm m-4 p-2 lg:p-4 shadow-lg bg-white rounded-2xl"
       >
         <div className="space-y-4">
           {/* Username Field */}

@@ -15,7 +15,7 @@ const BaseLayout: React.FC = () => {
         }`}
       >
         <NavBar onShow={setShowSideBar} />
-        <main className="mx-3 md:mx-4 py-6">
+        <main className="mx-3 md:mx-4 py-16 md:py-6">
           <Outlet />
         </main>
       </div>
