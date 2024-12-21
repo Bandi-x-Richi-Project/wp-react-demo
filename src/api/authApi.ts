@@ -1,7 +1,7 @@
 // src/api/authApi.ts
 import axios from "axios";
 import { useAuthStore } from "../store/authStore";
-import { JwtResponse } from "../types/type";
+import { JwtResponse } from "../lib/types";
 
 // Define types for login credentials and API response
 interface LoginCredentials {

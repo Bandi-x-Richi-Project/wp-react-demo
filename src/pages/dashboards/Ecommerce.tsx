@@ -1,16 +1,16 @@
 import { Dropdown } from "primereact/dropdown";
-import BarChart from "../components/charts/BarChart";
-import LineChart from "../components/charts/LineChart";
-import PieChart from "../components/charts/PieChart";
+import BarChart from "../../components/charts/BarChart";
+import LineChart from "../../components/charts/LineChart";
+import PieChart from "../../components/charts/PieChart";
 import { InputText } from "primereact/inputtext";
 import { IconField } from "primereact/iconfield";
 import { InputIcon } from "primereact/inputicon";
 import { Button } from "primereact/button";
-import ProductDataTable from "../components/ProductDataTable";
-import ProductList from "../components/ProductList";
+import ProductDataTable from "../../components/ProductDataTable";
+import ProductList from "../../components/ProductList";
 
-import { useUser } from "../hooks/useUser";
-import { useAuthStore } from "../store/authStore";
+import { useUser } from "../../hooks/useUser";
+import { useAuthStore } from "../../store/authStore";
 import { useEffect } from "react";
 
 const Home = () => {
