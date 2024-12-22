@@ -5,7 +5,7 @@ interface LineChartProps {
   color?: string;
 }
 
-const LineChart: FC<LineChartProps> = ({ color = "blue" }) => {
+const SimpleLineChart: FC<LineChartProps> = ({ color = "blue" }) => {
   const [chartData, setChartData] = useState({});
   const [chartOptions, setChartOptions] = useState({});
 
@@ -60,4 +60,4 @@ const LineChart: FC<LineChartProps> = ({ color = "blue" }) => {
   return <Chart type="line" data={chartData} options={chartOptions} />;
 };
 
-export default LineChart;
+export default SimpleLineChart;
