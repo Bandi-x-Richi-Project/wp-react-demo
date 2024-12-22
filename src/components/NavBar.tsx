@@ -42,18 +42,18 @@ const NavBar: FC<NavBarProps> = ({ onShow }) => {
       <nav className="top-0 z-50 h-[40px] md:h-[24px]">
         <div className="flex flex-wrap mx-auto my-2">
           <div className="flex w-full">
-            <div className="flex w-10/12 lg:w-11/12 px-2 md:ml-3 m-2 text-lg font-bold h-auto items-center">
+            <div className="flex w-10/12 md:w-11/12 px-2 md:ml-3 m-2 text-lg font-bold h-auto items-center">
               <Button
                 icon={<IoMenu size={22} />}
                 onClick={() => onShow(true)}
                 className="text-gray-600 p-2 w-auto h-auto hover:bg-gray-200 rounded-lg flex items-center justify-center"
                 text
               />
-              <span className="ml-2 text-gray-500 hidden md:inline">
+              <span className="ml-3 text-gray-500 hidden md:inline">
                 E-Commerce Dashboard
               </span>
             </div>
-            <div className="w-2/12 lg:w-1/12 px-2 mx-2 h-fit justify-center flex">
+            <div className="w-2/12 md:w-1/12 px-2 mx-2 h-fit justify-center flex">
               <Link
                 to="/"
                 className="flex justify-end align-items-center cursor-pointer p-3 gap-2 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple"

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Chart } from "primereact/chart";
 
-const BarChart = () => {
+const DoubleLineChart = () => {
   const [chartData, setChartData] = useState({});
   const [chartOptions, setChartOptions] = useState({});
 
@@ -11,58 +11,52 @@ const BarChart = () => {
     const textColorSecondary = documentStyle.getPropertyValue(
       "--text-color-secondary"
     );
-    const surfaceBorder = documentStyle.getPropertyValue("--surface-border");
     const data = {
-      labels: ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"],
+      labels: ["January", "February", "March", "April", "May", "June", "July"],
       datasets: [
         {
-          label: "Revenue",
-          backgroundColor: "#6366f1",
-          data: [65, 59, 80, 81, 56, 55, 40],
-          borderRadius: 20,
+          label: "Income",
+          data: [6500, 6000, 8100, 8000, 5600, 5500, 4000],
+          borderColor: "#22C55E",
+          backgroundColor: "rgba(34, 197, 94, 0.2)",
+          tension: 0.4,
+          fill: true,
         },
         {
-          label: "Profit",
-          backgroundColor: "#d9ddfc",
-          data: [28, 48, 40, 19, 86, 27, 90],
-          borderRadius: 20,
+          label: "Expenses",
+          data: [1100, 5000, 6200, 3200, 2100, 6100, 4600],
+          borderColor: "#6366F1",
+          backgroundColor: "rgba(99, 102, 241, 0.2)",
+          tension: 0.4,
+          fill: true,
         },
       ],
     };
     const options = {
       responsive: true,
-      barPercentage: 1,
-      categoryPercentage: 0.3,
       maintainAspectRatio: false,
       aspectRatio: 1,
       plugins: {
         legend: {
-          position: "bottom",
           labels: {
-            fontColor: textColor,
+            color: textColor,
           },
         },
       },
       scales: {
         x: {
+          display: true,
           ticks: {
             color: textColorSecondary,
             font: {
               weight: 500,
             },
           },
-          grid: {
-            display: false,
-            drawBorder: false,
-          },
         },
         y: {
+          display: true,
           ticks: {
             color: textColorSecondary,
-          },
-          grid: {
-            color: surfaceBorder,
-            drawBorder: false,
           },
         },
       },
@@ -72,7 +66,7 @@ const BarChart = () => {
     setChartOptions(options);
   }, []);
 
-  return <Chart type="bar" data={chartData} options={chartOptions} />;
+  return <Chart type="line" data={chartData} options={chartOptions} />;
 };
 
-export default BarChart;
+export default DoubleLineChart;

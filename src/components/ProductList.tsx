@@ -2,19 +2,7 @@ import { useState, useEffect } from "react";
 import { DataView } from "primereact/dataview";
 import { Rating } from "primereact/rating";
 import { ProductService } from "../mock/products";
-
-interface Product {
-  id: string;
-  code: string;
-  name: string;
-  description: string;
-  image: string;
-  price: number;
-  category: string;
-  quantity: number;
-  inventoryStatus: string;
-  rating: number;
-}
+import { Product } from "../lib/types";
 
 const ProductList = () => {
   const [products, setProducts] = useState<Product[]>([]);

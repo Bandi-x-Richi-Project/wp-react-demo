@@ -1,9 +1,10 @@
 import { Route, Routes, Navigate } from "react-router-dom";
-import Home from "./pages/Home";
+import Home from "./pages/dashboards/Ecommerce";
 
 import PrivateRoute from "./components/PrivateRoute";
 import Login from "./pages/Login";
 import BaseLayout from "./layouts/BaseLayout";
+import Banking from "./pages/dashboards/Banking";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route element={<PrivateRoute />}>
           <Route path="/" element={<BaseLayout />}>
             <Route index element={<Home />} />
+            <Route path="dashboard-banking" element={<Banking />} />
           </Route>
         </Route>
 

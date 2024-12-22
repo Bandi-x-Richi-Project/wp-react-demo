@@ -5,6 +5,7 @@ import { Sidebar } from "primereact/sidebar";
 import { StyleClass } from "primereact/styleclass";
 import { FC, useRef } from "react";
 import { IoLogoSlack } from "react-icons/io5";
+import { useLocation, useNavigate } from "react-router-dom";
 
 interface SideBarMainProps {
   visible: boolean;
@@ -12,7 +13,11 @@ interface SideBarMainProps {
 }
 
 const SideBarMain: FC<SideBarMainProps> = ({ visible, onHide }) => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const btnRef1 = useRef<any>(null);
+
+  const isActive = (path: string) => location.pathname === path;
 
   return (
     <Sidebar
@@ -54,16 +59,34 @@ const SideBarMain: FC<SideBarMainProps> = ({ visible, onHide }) => {
                     </span>
                   </div>
                   <li>
-                    <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
+                    <a
+                      className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
+                      onClick={() => navigate("/")}
+                    >
                       <i className="pi pi-home mr-2 text-primary" />
-                      <span className="font-medium">E-Commerce</span>
+                      <span
+                        className={isActive("/") ? "font-bold" : "font-medium"}
+                      >
+                        E-Commerce
+                      </span>
                       <Ripple />
                     </a>
                   </li>
                   <li>
-                    <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
+                    <a
+                      className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
+                      onClick={() => navigate("/dashboard-banking")}
+                    >
                       <i className="pi pi-bookmark mr-2 text-primary" />
-                      <span className="font-medium">Banking</span>
+                      <span
+                        className={
+                          isActive("/dashboard-banking")
+                            ? "font-bold"
+                            : "font-medium"
+                        }
+                      >
+                        Banking
+                      </span>
                       <Ripple />
                     </a>
                   </li>
@@ -95,32 +118,76 @@ const SideBarMain: FC<SideBarMainProps> = ({ visible, onHide }) => {
                         </StyleClass>
                         <ul className="list-none py-0 pl-3 pr-0 m-0 hidden overflow-y-hidden transition-all transition-duration-400 transition-ease-in-out">
                           <li>
-                            <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
+                            <a
+                              className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
+                              onClick={() => navigate("/apps/blog/list")}
+                            >
                               <i className="pi pi-image mr-2 text-primary" />
-                              <span className="font-medium">List</span>
+                              <span
+                                className={
+                                  isActive("/apps/blog/list")
+                                    ? "font-bold"
+                                    : "font-medium"
+                                }
+                              >
+                                List
+                              </span>
                               <Ripple />
                             </a>
                           </li>
                           <li>
-                            <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
+                            <a
+                              className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
+                              onClick={() => navigate("/apps/blog/detail")}
+                            >
                               <i className="pi pi-list mr-2 text-primary" />
-                              <span className="font-medium">Detail</span>
+                              <span
+                                className={
+                                  isActive("/apps/blog/detail")
+                                    ? "font-bold"
+                                    : "font-medium"
+                                }
+                              >
+                                Detail
+                              </span>
                               <Ripple />
                             </a>
                           </li>
                         </ul>
                       </li>
                       <li>
-                        <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
+                        <a
+                          className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
+                          onClick={() => navigate("/apps/calendar")}
+                        >
                           <i className="pi pi-calendar mr-2 text-primary" />
-                          <span className="font-medium">Calendar</span>
+                          <span
+                            className={
+                              isActive("/apps/calendar")
+                                ? "font-bold"
+                                : "font-medium"
+                            }
+                          >
+                            Calendar
+                          </span>
                           <Ripple />
                         </a>
                       </li>
                       <li>
-                        <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
+                        <a
+                          className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
+                          onClick={() => navigate("/apps/chat")}
+                        >
                           <i className="pi pi-comments mr-2 text-primary" />
-                          <span className="font-medium">Chat</span>
+                          <span
+                            className={
+                              isActive("/apps/chat")
+                                ? "font-bold"
+                                : "font-medium"
+                            }
+                          >
+                            Chat
+                          </span>
                           <span
                             className="inline-flex align-items-center justify-content-center ml-auto bg-primary text-0 border-circle"
                             style={{ minWidth: "1.5rem", height: "1.5rem" }}
@@ -131,23 +198,56 @@ const SideBarMain: FC<SideBarMainProps> = ({ visible, onHide }) => {
                         </a>
                       </li>
                       <li>
-                        <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
+                        <a
+                          className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
+                          onClick={() => navigate("/apps/files")}
+                        >
                           <i className="pi pi-folder mr-2 text-primary" />
-                          <span className="font-medium">Files</span>
+                          <span
+                            className={
+                              isActive("/apps/files")
+                                ? "font-bold"
+                                : "font-medium"
+                            }
+                          >
+                            Files
+                          </span>
                           <Ripple />
                         </a>
                       </li>
                       <li>
-                        <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
+                        <a
+                          className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
+                          onClick={() => navigate("/apps/mail")}
+                        >
                           <i className="pi pi-envelope mr-2 text-primary" />
-                          <span className="font-medium">Mail</span>
+                          <span
+                            className={
+                              isActive("/apps/mail")
+                                ? "font-bold"
+                                : "font-medium"
+                            }
+                          >
+                            Mail
+                          </span>
                           <Ripple />
                         </a>
                       </li>
                       <li>
-                        <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
+                        <a
+                          className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
+                          onClick={() => navigate("/apps/tasklist")}
+                        >
                           <i className="pi pi-check-square mr-2 text-primary" />
-                          <span className="font-medium">Task List</span>
+                          <span
+                            className={
+                              isActive("/apps/tasklist")
+                                ? "font-bold"
+                                : "font-medium"
+                            }
+                          >
+                            Task List
+                          </span>
                           <Ripple />
                         </a>
                       </li>

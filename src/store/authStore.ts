@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { User } from "../types/type";
+import { User } from "../lib/types";
 import Cookies from "js-cookie";
 
 interface AuthState {
