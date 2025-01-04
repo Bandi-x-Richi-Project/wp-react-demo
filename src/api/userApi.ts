@@ -2,7 +2,7 @@ import axios from "axios";
 import { useAuthStore } from "../store/authStore";
 
 const userApi = axios.create({
-  baseURL: "https://13.61.27.234.nip.io/wp-json/wp/v2",
+  baseURL: "https://admin.buddypest.hu/wp-json/wp/v2",
 });
 
 userApi.interceptors.request.use((config) => {
