@@ -90,7 +90,7 @@ const Banking = () => {
         <Card className="flex flex-col items-center h-full justify-between">
           <i className="pi pi-dollar text-4xl text-primary"></i>
           <span className="font-bold text-xl">Primary</span>
-          <h2 className="text-3xl font-bold mt-2 text-primary">$24,345.21</h2>
+          <h2 className="text-3xl font-bold mt-2 text-primary">$24,245.21</h2>
         </Card>
       </div>
 
