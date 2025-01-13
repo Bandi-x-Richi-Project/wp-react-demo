@@ -6,8 +6,14 @@ import { validateToken } from "../api/authApi";
 const PrivateRoute = () => {
   const { token, logOut, checkAuth, isAuthenticated } = useAuthStore();
   const navigate = useNavigate();
+  const skipLogin = import.meta.env.VITE_SKIP_LOGIN ?? false;
 
   useEffect(() => {
+    if (skipLogin) {
+      console.log("Skip login is enabled, bypassing authentication checks.");
+      return;
+    }
+
     // Check for authentication state on mount
     const checkAuthentication = async () => {
       checkAuth(); // Restore auth state from session or localStorage
@@ -28,6 +34,11 @@ const PrivateRoute = () => {
 
     checkAuthentication();
   }, [token, checkAuth, logOut, navigate]);
+
+  // If skip login is enabled, always render protected content
+  if (skipLogin) {
+    return <Outlet />;
+  }
 
   // Delay rendering until authentication is checked
   if (!isAuthenticated || !token) {

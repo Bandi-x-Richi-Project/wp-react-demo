@@ -8,6 +8,7 @@ import "primeflex/primeflex.css";
 import "primereact/resources/primereact.css";
 import "primereact/resources/themes/lara-light-indigo/theme.css";
 import { QueryClient, QueryClientProvider } from "react-query";
+import "../i18n";
 
 const queryClient = new QueryClient();
 

@@ -1,4 +1,3 @@
-// src/components/NavBar.tsx
 import { Link } from "react-router-dom";
 import { Button } from "primereact/button";
 import { IoMenu } from "react-icons/io5";
@@ -8,16 +7,31 @@ import { Dialog } from "primereact/dialog";
 import { useAuthStore } from "../store/authStore";
 import { useNavigate } from "react-router-dom";
 import { OverlayPanel } from "primereact/overlaypanel";
+import { useTranslation } from "react-i18next";
 
 interface NavBarProps {
   onShow: (open: boolean) => void;
 }
 
+const langs = [
+  { name: "🇬🇧", value: "en" },
+  { name: "🇭🇺", value: "hu" },
+];
+
 const NavBar: FC<NavBarProps> = ({ onShow }) => {
+  const { t } = useTranslation();
   const [showModal, setShowModal] = useState(false);
   const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
   const { logOut, user } = useAuthStore();
   const navigate = useNavigate();
+  const { i18n } = useTranslation();
+  const opRef = useRef<OverlayPanel>(null);
+
+  const handleLogout = () => {
+    logOut();
+    navigate("/login");
+    setShowModal(false);
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -29,20 +43,12 @@ const NavBar: FC<NavBarProps> = ({ onShow }) => {
     };
   }, []);
 
-  const handleLogout = () => {
-    logOut();
-    navigate("/login");
-    setShowModal(false);
-  };
-
-  const opRef = useRef<OverlayPanel>(null);
-
   return (
     <>
       <nav className="top-0 z-50 h-[40px] md:h-[24px]">
         <div className="flex flex-wrap mx-auto my-2">
           <div className="flex w-full">
-            <div className="flex w-10/12 md:w-11/12 px-2 md:ml-3 m-2 text-lg font-bold h-auto items-center">
+            <div className="flex w-6/12 md:w-9/12 px-2 md:ml-3 m-2 text-lg font-bold h-auto items-center">
               <Button
                 icon={<IoMenu size={22} />}
                 onClick={() => onShow(true)}
@@ -50,13 +56,27 @@ const NavBar: FC<NavBarProps> = ({ onShow }) => {
                 text
               />
               <span className="ml-3 text-gray-500 hidden md:inline">
-                E-Commerce Dashboard
+                {t("eCommerce")}
               </span>
             </div>
-            <div className="w-2/12 md:w-1/12 px-2 mx-2 h-fit justify-center flex">
+            <div className="w-6/12 md:w-3/12 px-2 mx-2 h-fit flex justify-end items-center ">
+              {/* Language Icon - Main Clickable Icon */}
+
+              <div
+                className="text-xl mr-2 cursor-pointer"
+                onClick={() =>
+                  i18n.changeLanguage(
+                    langs.find((l) => l.value !== i18n.language)?.value
+                  )
+                }
+              >
+                {langs.find((l) => l.value !== i18n.language)?.name}
+              </div>
+
+              {/* Overlay Panel for Logout */}
               <Link
-                to="/"
-                className="flex justify-end align-items-center cursor-pointer p-3 gap-2 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple"
+                to="#"
+                className="flex justify-end align-items-center cursor-pointer p-3 gap-2"
                 onClick={(e) => {
                   opRef.current?.toggle(e);
                 }}
@@ -66,7 +86,6 @@ const NavBar: FC<NavBarProps> = ({ onShow }) => {
                   shape="circle"
                 />
               </Link>
-              {/* Overlay Panel for Logout */}
               <OverlayPanel
                 ref={opRef}
                 showCloseIcon={windowWidth >= 1024 ? true : false}
@@ -76,7 +95,9 @@ const NavBar: FC<NavBarProps> = ({ onShow }) => {
                   <p className="text-bg">{user?.name}</p>
                   <hr className="my-3 w-full border-top-1 border-none surface-border" />
                   <Button
-                    label="Logout"
+                    label={t("logout")}
+                    size="small"
+                    severity="success"
                     icon="pi pi-sign-out"
                     className="p-0"
                     text
@@ -88,7 +109,7 @@ const NavBar: FC<NavBarProps> = ({ onShow }) => {
           </div>
           <div className="w-full ml-3">
             <span className="ml-2 text-gray-500 font-bold w-full md:hidden">
-              E-Commerce Dashboard
+              {t("eCommerce")}
             </span>
           </div>
         </div>
@@ -102,7 +123,7 @@ const NavBar: FC<NavBarProps> = ({ onShow }) => {
         onHide={() => setShowModal(false)}
       >
         <div className="flex justify-center">
-          <p>Are you sure you want to log out?</p>
+          <p> {t("logoutConfirm")}</p>
         </div>
         <div className="flex justify-around">
           <Button

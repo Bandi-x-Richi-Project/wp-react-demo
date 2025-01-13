@@ -9,8 +9,10 @@ import { Button } from "primereact/button";
 import ProductDataTable from "../../components/ProductDataTable";
 import ProductList from "../../components/ProductList";
 import Card from "../../components/Card";
+import { useTranslation } from "react-i18next";
 
 const Home = () => {
+  const { t } = useTranslation();
   // const { setUser } = useAuthStore();
   // const { data: user, isLoading, error } = useUser();
 
@@ -29,7 +31,7 @@ const Home = () => {
         <Card>
           <div className="flex items-start">
             <div className="w-6 h-full items-start">
-              <span className="font-semibold text-lg">Sales</span>
+              <span className="font-semibold text-lg">{t("sales")}</span>
               <div className="w-full flex flex-col mt-2">
                 <span className="text-4xl font-bold text-900">120</span>
                 <div className="text-green-500 flex items-center">
@@ -48,7 +50,7 @@ const Home = () => {
         <Card>
           <div className="flex items-start">
             <div className="w-6 h-full items-start">
-              <span className="font-semibold text-lg">Revenue</span>
+              <span className="font-semibold text-lg">{t("revenue")}</span>
               <div className="w-full flex flex-col mt-2">
                 <span className="text-4xl font-bold text-900">$450</span>
                 <div className="text-green-500 flex items-center">
@@ -67,7 +69,7 @@ const Home = () => {
         <Card>
           <div className="flex items-start">
             <div className="w-6 h-full items-start">
-              <span className="font-semibold text-lg">Visitors</span>
+              <span className="font-semibold text-lg">{t("visitors")}</span>
               <div className="w-full flex flex-col mt-2">
                 <span className="text-4xl font-bold text-900">360</span>
                 <div className="text-red-500 flex items-center">
@@ -86,7 +88,7 @@ const Home = () => {
         <Card>
           <div className="flex items-start">
             <div className="w-6 h-full items-start">
-              <span className="font-semibold text-lg">Stock</span>
+              <span className="font-semibold text-lg">{t("stock")}</span>
               <div className="w-full flex flex-col mt-2">
                 <span className="text-4xl font-bold text-900">164</span>
                 <div className="text-green-500 flex items-center">
@@ -104,11 +106,13 @@ const Home = () => {
       <div className="col-12 xl:col-9">
         <Card className="h-auto">
           <div className="flex justify-content-between align-items-center mb-4">
-            <h3 className="text-900 text-xl font-semibold">Revenue Overview</h3>
+            <h3 className="text-900 text-xl font-semibold">
+              {t("revenueOverview")}
+            </h3>
             <Dropdown
-              value="Last Week"
+              value={t("lastWeek")}
               // onChange={(e) => set(e.value)}
-              options={["Last Week", "This Week"]}
+              options={[t("lastWeek"), t("thisWeek")]}
             />
           </div>
           <div className="p-chart" data-pc-name="chart" data-pc-section="root">
@@ -119,7 +123,7 @@ const Home = () => {
       <div className="col-12 xl:col-3">
         <Card className="h-auto">
           <div className="text-900 text-xl font-semibold mb-6">
-            Sales by Category
+            {t("salesByCategory")}
           </div>
           <div className="p-chart flex justify-content-center">
             <PieChart />
@@ -130,7 +134,7 @@ const Home = () => {
         <Card>
           <div className="flex flex-column md:flex-row md:align-items-start md:justify-content-between mb-3">
             <div className="text-900 text-xl font-semibold mb-3 md:mb-0">
-              Recent Sales
+              {t("recentSales")}
             </div>
             <div className="inline-flex align-items-center">
               <IconField
@@ -139,7 +143,7 @@ const Home = () => {
               >
                 <InputIcon className="pi pi-search" />
                 <InputText
-                  placeholder="Search"
+                  placeholder={t("search")}
                   className="rounded-full overflow-hidden border"
                 />
               </IconField>
@@ -157,7 +161,7 @@ const Home = () => {
         <Card className="w-full">
           <div className="flex flex-column md:flex-row md:align-items-start md:justify-content-between mb-3">
             <div className="text-900 text-xl font-semibold mb-3 md:mb-0">
-              Top Products
+              {t("topProducts")}
             </div>
           </div>
           <div className="w-auto">

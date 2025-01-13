@@ -10,8 +10,10 @@ import PaymentsDataTable from "../../components/PaymentsDataTable";
 import { useEffect, useState } from "react";
 import { Payee } from "../../lib/types";
 import { TransactionService } from "../../mock/transactions";
+import { useTranslation } from "react-i18next";
 
 const Banking = () => {
+  const { t } = useTranslation();
   const [payees, setPayess] = useState<Payee[]>([]);
 
   useEffect(() => {
@@ -28,10 +30,8 @@ const Banking = () => {
           size="large"
         />
         <div>
-          <h2 className="font-bold text-xl mb-1">Welcome Isabel</h2>
-          <p className="text-sm text-500 font-medium">
-            Your last login was on 04/05/2022 at 10:24 am
-          </p>
+          <h2 className="font-bold text-xl mb-1">{t("welcome")} Isabel</h2>
+          <p className="text-sm text-500 font-medium">{t("lastLogin")}</p>
         </div>
       </div>
 
@@ -60,8 +60,8 @@ const Banking = () => {
 
           {/* Card Content */}
           <div className="relative z-10">
-            <span className="font-bold text-xl">Debit Card</span>
-            <p className="font-medium text-sm mt-3">Balance</p>
+            <span className="font-bold text-xl">{t("debitCard")}</span>
+            <p className="font-medium text-sm mt-3">{t("balance")}</p>
             <h2 className="text-3xl font-bold mt-2">$2,000.00</h2>
             <div className="flex items-center mt-3 justify-between">
               <p className="text-sm">**** **** **** 1412</p>
@@ -74,10 +74,10 @@ const Banking = () => {
       <div className="col-12 md:col-6 xl:col-4">
         <Card className="text-black h-full">
           <div className="flex items-center justify-between -mt-2">
-            <span className="font-bold text-xl">Credit Card</span>
+            <span className="font-bold text-xl">{t("creditCard")}</span>
             <RiVisaLine size={42} className="text-blue-600" />
           </div>
-          <p className="font-medium text-sm mt-3">Debt</p>
+          <p className="font-medium text-sm mt-3">{t("debt")}</p>
           <h2 className="text-3xl font-bold mt-2 text-primary">$1,500.00</h2>
           <div className="flex items-center mt-3 justify-between">
             <p className="text-sm">**** **** **** 1231</p>
@@ -89,7 +89,7 @@ const Banking = () => {
       <div className="col-12 md:col-6 xl:col-2">
         <Card className="flex flex-col items-center h-full justify-between">
           <i className="pi pi-dollar text-4xl text-primary"></i>
-          <span className="font-bold text-xl">Primary</span>
+          <span className="font-bold text-xl">{t("primary")}</span>
           <h2 className="text-3xl font-bold mt-2 text-primary">$24,245.21</h2>
         </Card>
       </div>
@@ -97,7 +97,7 @@ const Banking = () => {
       <div className="col-12 md:col-6 xl:col-2">
         <Card className="flex flex-col items-center h-full justify-between">
           <i className="pi pi-euro text-4xl text-primary"></i>
-          <span className="font-bold text-xl">Currency</span>
+          <span className="font-bold text-xl">{t("currency")}</span>
           <h2 className="text-3xl font-bold mt-2 text-primary">$10,426.11</h2>
         </Card>
       </div>
@@ -107,7 +107,7 @@ const Banking = () => {
         <Card className="w-full">
           <div className="flex flex-column md:flex-row md:align-items-start md:justify-content-between mb-3">
             <div className="text-900 text-xl font-semibold mb-3 md:mb-0">
-              Recent Transactions
+              {t("recentTransactions")}
             </div>
           </div>
           <div className="w-auto">
@@ -120,10 +120,10 @@ const Banking = () => {
       <div className="col-12 xl:col-8">
         <Card>
           <div className="flex justify-content-between items-start mb-3">
-            <h3 className="text-900 text-xl font-semibold">Overview</h3>
+            <h3 className="text-900 text-xl font-semibold">{t("overview")}</h3>
             <Dropdown
-              value="Last Month"
-              options={["Last Month", "This Month"]}
+              value={t("lastMonth")}
+              options={[t("lastMonth"), t("thisMonth")]}
             />
           </div>
           <div className="p-chart" data-pc-name="chart" data-pc-section="root">
@@ -136,8 +136,8 @@ const Banking = () => {
       <div className="col-12 xl:col-6">
         <Card className="h-full w-full flex flex-col items-center">
           <div className="flex justify-between items-center mb-4 w-full">
-            <h3 className="text-lg font-bold">Most Common Payees</h3>
-            <Button label="+ Add New" className="p-button-outlined" />
+            <h3 className="text-lg font-bold">{t("mostCommonPayees")}</h3>
+            <Button label={t("addNew")} className="p-button-outlined" />
           </div>
           <div className="grid w-full h-full">
             {payees.map((transaction, index) => (
@@ -162,7 +162,7 @@ const Banking = () => {
               locale="en-US"
               className="flex-grow focus:outline-none"
             />
-            <Button label="Send" className="p-button w-full sm:w-auto" />
+            <Button label={t("send")} className="p-button w-full sm:w-auto" />
           </div>
         </Card>
       </div>
@@ -172,7 +172,7 @@ const Banking = () => {
         <Card>
           <div className="flex flex-column md:flex-row md:align-items-start md:justify-content-between mb-3">
             <div className="text-900 text-xl font-semibold mb-3 md:mb-0">
-              Monthly Payments
+              {t("monthlyPayments")}
             </div>
           </div>
           <div data-pc-name="chart" data-pc-section="root">
