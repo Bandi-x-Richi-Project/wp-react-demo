@@ -23,8 +23,10 @@ jobs:
       - name: Set up environment variables
         run: echo "VITE_SKIP_LOGIN=${{ secrets.VITE_SKIP_LOGIN }}" >> $GITHUB_ENV
 
-      - name: Use the secret in build (for debugging)
-        run: echo "Using secret key: $VITE_SKIP_LOGIN"
+      - name: Verify environment variable (safe check)
+        run: echo "VITE_SKIP_LOGIN is set"
+        env:
+          VITE_SKIP_LOGIN: ${{ secrets.VITE_SKIP_LOGIN }}
 
       - name: Build project
         run: npm run build
