@@ -11,7 +11,7 @@ interface LoginCredentials {
 
 // Create an Axios instance
 const api = axios.create({
-  baseURL: "https://admin.buddypest.hu/wp-json", // Replace with your API base URL
+  baseURL: "https://web2build.hu/wp-json", // Replace with your API base URL
   headers: {
     "Content-Type": "application/json",
   },
