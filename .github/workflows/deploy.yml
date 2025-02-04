@@ -24,7 +24,7 @@ jobs:
         run: npm run build
 
       - name: Add CNAME for custom domain
-        run: echo "buddypest.hu" > ./dist/CNAME
+        run: echo "app.web2build.hu" > ./dist/CNAME
 
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v4
