@@ -1,10 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Avatar } from "primereact/avatar";
 import { Ripple } from "primereact/ripple";
 import { Sidebar } from "primereact/sidebar";
 import { StyleClass } from "primereact/styleclass";
 import { FC, useRef } from "react";
-import { IoLogoSlack } from "react-icons/io5";
+import { IoCaretBackCircle } from "react-icons/io5";
 import { useLocation, useNavigate } from "react-router-dom";
 
 interface SideBarMainProps {
@@ -32,12 +31,25 @@ const SideBarMain: FC<SideBarMainProps> = ({ visible, onHide }) => {
             className="w-full surface-section h-screen block flex-shrink-0 absolute lg:static left-0 top-0 z-1 surface-border select-none"
           >
             <div className="flex flex-column h-full">
-              <div className="flex align-items-center justify-content-between px-4 py-3 flex-shrink-0">
-                <span className="inline-flex align-items-center gap-2">
-                  <IoLogoSlack size={32} className="text-primary" />
-                  <span className="font-semibold text-2xl text-primary">
-                    Your Logo
-                  </span>
+              <div
+                className="flex align-items-center justify-content-between px-4 pt-3 pb-1 flex-shrink-0 cursor-pointer"
+                onClick={() => navigate("/")}
+              >
+                <span className="inline-flex items-start gap-2">
+                  {/* <IoLogoSlack size={32} className="text-primary" /> */}
+                  <img
+                    src="/web2build-icon.png"
+                    alt="web2build logo"
+                    className="h-8"
+                  />
+                  <div className="flex gap-1">
+                    <span className="font-semibold text-2xl text-primary">
+                      Web2Build
+                    </span>
+                    <span className="font-semibold text-sm text-primary">
+                      Demo
+                    </span>
+                  </div>
                 </span>
                 {/* <span>
                 <Button
@@ -256,13 +268,13 @@ const SideBarMain: FC<SideBarMainProps> = ({ visible, onHide }) => {
                 </ul>
               </div>
               <div className="mt-auto">
-                <hr className="mb-3 mx-3 border-top-1 border-none surface-border" />
-                <a className="m-3 flex align-items-center cursor-pointer p-3 gap-2 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple">
-                  <Avatar
-                    image="https://primefaces.org/cdn/primereact/images/avatar/amyelsner.png"
-                    shape="circle"
-                  />
-                  <span className="font-bold">Amy Elsner</span>
+                <hr className="mx-3 border-top-1 border-none surface-border" />
+                <a
+                  className="py-4 px-3 flex align-items-center cursor-pointer gap-2 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple"
+                  href="https://web2build.hu/"
+                >
+                  <IoCaretBackCircle size={32} />
+                  <span className="font-semibold">Back to Web2Build.hu</span>
                 </a>
               </div>
             </div>
