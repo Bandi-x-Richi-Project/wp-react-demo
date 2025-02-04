@@ -6,7 +6,7 @@ import { validateToken } from "../api/authApi";
 const PrivateRoute = () => {
   const { token, logOut, checkAuth, isAuthenticated } = useAuthStore();
   const navigate = useNavigate();
-  const skipLogin = import.meta.env.VITE_SKIP_LOGIN ?? false;
+  const skipLogin = true; //import.meta.env.VITE_SKIP_LOGIN ?? false;
 
   useEffect(() => {
     if (skipLogin) {
