@@ -55,9 +55,9 @@ const NavBar: FC<NavBarProps> = ({ onShow }) => {
                 className="text-gray-600 p-2 w-auto h-auto hover:bg-gray-200 rounded-lg flex items-center justify-center"
                 text
               />
-              <span className="ml-3 text-gray-500 hidden md:inline">
+              <h1 className="ml-3 text-gray-500 hidden md:inline">
                 {t("eCommerce")}
-              </span>
+              </h1>
             </div>
             <div className="w-6/12 md:w-3/12 px-2 mx-2 h-fit flex justify-end items-center ">
               {/* Language Icon - Main Clickable Icon */}
@@ -108,9 +108,9 @@ const NavBar: FC<NavBarProps> = ({ onShow }) => {
             </div>
           </div>
           <div className="w-full ml-3">
-            <span className="ml-2 text-gray-500 font-bold w-full md:hidden">
+            <h1 className="ml-2 text-gray-500 font-bold w-full md:hidden">
               {t("eCommerce")}
-            </span>
+            </h1>
           </div>
         </div>
       </nav>
